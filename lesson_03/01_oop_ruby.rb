@@ -105,6 +105,26 @@ class Train
     @current_station = @route.list_st[current_index + 1]
     @current_station.add_train(self)
   end
+
+  def next_station
+    return unless @current_station
+
+    current_index = @route.list_st.find_index(@current_station)
+
+    return puts 'It is already final' unless current_index + 1 < @route.list_st.count
+
+    @route.list_st[current_index + 1]
+  end
+
+  def previous_station
+    return unless @current_station
+
+    current_index = @route.list_st.find_index(@current_station)
+
+    return puts 'It is start' if current_index == 0
+
+    @route.list_st[current_index - 1]
+  end
 end
 
 # Класс Route (Маршрут):
@@ -168,16 +188,22 @@ rout1.add_station(station3)
 
 train1.get_route(rout1)
 
-puts train1.current_station
+puts rout1.list_st
+
+puts 'x' * 30
+
+# puts train1.current_station
+
+puts train1.next_station
+puts train1.previous_station
 
 train1.move_to_next
 
-puts train1.current_station
+puts train1.next_station
+puts train1.previous_station
 
 train1.move_to_next
 
-puts train1.current_station
-
-
-
+puts train1.next_station
+puts train1.previous_station
 
