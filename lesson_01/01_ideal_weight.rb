@@ -8,8 +8,12 @@ name = gets.chop
 height = Integer(gets.chop)
 ideal_weight = height - 100
 
-if ideal_weight.negative?
-  puts 'Yours weight is optimal at the moment'
+if ideal_weight > 0
+  if ideal_weight.negative?
+    puts 'Yours weight is optimal at the moment'
+  else
+    puts "#{name} yours ideal weight is #{ideal_weight}"
+  end
 else
-  puts "#{name} yours ideal weight is #{ideal_weight}"
+  puts 'Your weight whould not be negative'
 end

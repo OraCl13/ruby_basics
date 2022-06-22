@@ -17,8 +17,4 @@ month_hash = {
   'December' => 30
 }
 
-month_hash.each do |month, number_of_days|
-  next if number_of_days != 30
-
-  puts month
-end
+puts month_hash.map { |month, number_of_days| month if number_of_days == 30 }.to_a

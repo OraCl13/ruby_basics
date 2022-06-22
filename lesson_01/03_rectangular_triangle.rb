@@ -16,8 +16,8 @@ c = Integer(gets.chop)
 sum_values = a + b + c
 max_value = [a, b, c].max
 min_value = [a, b, c].min
-
+#validations
 puts 'Triangle is '
 print 'Equal-side, ' if a == b && b == c && c == a
 print '2 Equal-side, ' if a == b || b == c || a == c
-print 'with angle equal to 90' if max_value ^ 2 == min_value ^ 2 + (sum_values - max_value - min_value) ^ 2
+print 'with angle equal to 90' if max_value ** 2 == min_value ** 2 + (sum_values - max_value - min_value) ** 2

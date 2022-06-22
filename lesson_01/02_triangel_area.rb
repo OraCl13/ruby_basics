@@ -9,4 +9,8 @@ a = Integer(gets.chop)
 print 'Height: '
 h = Integer(gets.chop)
 
-puts "#{0.5 * a * h} - triangle area"
+if a < 0 || b < 0
+  puts 'Error'
+else
+  puts "#{0.5 * a * h} - triangle area"
+end

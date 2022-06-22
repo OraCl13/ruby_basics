@@ -11,19 +11,12 @@ day = gets.chop.to_i
 month = gets.chop.to_i
 year = gets.chop.to_i
 
-high_year = if (year % 4).zero? && (year % 100 != 0)
-              true
-            else
-              (year % 400).zero?
-            end
+high_year = ((year % 4).zero? && (year % 100 != 0) || (year % 400).zero?) || false
 
-day_sum = day
-(0...month - 1).each do |i|
-  day_sum += month_days[i]
-end
+(0...month - 1).map { |i| day += month_days[i] }
 
 if high_year
-  puts day_sum
+  puts day
 else
-  puts day_sum - 1
+  puts day - 1
 end
