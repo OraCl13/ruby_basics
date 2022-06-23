@@ -205,5 +205,3 @@ puts train1.previous_station
 train1.move_to_next
 
 puts train1.next_station
-puts train1.previous_station
-
