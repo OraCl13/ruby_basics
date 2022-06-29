@@ -81,7 +81,7 @@ class Train
 
   def remove_van
     puts @n_vans
-    return puts 'Stop please to remove van or add one more' if !@current_speed.zero? || @n_vans == 0
+    return puts 'Stop please to remove van or add one more' if !@current_speed.zero? || @n_vans.zero?
 
     puts 'Van removed'
     @n_vans -= 1
@@ -121,7 +121,7 @@ class Train
 
     current_index = @route.list_st.find_index(@current_station)
 
-    return puts 'It is start' if current_index == 0
+    return puts 'It is start' if current_index.zero?
 
     @route.list_st[current_index - 1]
   end
