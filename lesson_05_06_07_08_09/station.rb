@@ -3,7 +3,6 @@
 require_relative 'modules/validate'
 
 class Station
-  include Validate
 
   attr_reader :trains_info, :name
 
@@ -12,7 +11,7 @@ class Station
   def initialize(name)
     @name = name
     @trains_info = []
-    valid?(STATION_RE, @name, 'Station name doesnt match to requirements')
+    #valid?(STATION_RE, @name, 'Station name doesnt match to requirements')
 
     @@all_stations.push(self)
   end

@@ -13,22 +13,8 @@ require_relative 'passenger_train'
 require_relative 'product_train'
 require_relative 'passenger_van'
 require_relative 'product_van'
+require_relative 'train'
 
 station1 = Station.new('Text1')
 
-train1 = PassengerTrain.new('1ab-2b')
-train2 = ProductTrain.new('1ab-2b')
-
-station1.add_train(train1)
-station1.add_train(train2)
-pass_van = PassengerVan.new(100)
-pass_van1 = PassengerVan.new(100)
-pass_van2 = PassengerVan.new(100)
-
-train1.add_van(pass_van)
-train1.add_van(pass_van1)
-train1.add_van(pass_van2)
-
-station1.trains_in { |train| puts train }
-puts 'x' * 30
-train1.vans_in { |elem| puts elem }
+train1 = Train.new('2ab-as')

@@ -3,24 +3,36 @@
 require_relative 'modules/name_info'
 require_relative 'modules/instance_counter'
 require_relative 'modules/validate'
+require_relative 'modules/my_accessors'
 
 class Train
   include NameInfo
   include InstanceCounter
-  include Validate
+  # include Validate
+  include Validation
+  extend Accessors
 
   attr_reader :current_speed, :current_station, :vans, :num
   attr_accessor :type
 
+  attr_accessor_with_history :a, :b, :c
+  # strong_attr_accessor {:non => Train}
+
   TRAIN_RE = /^[\d|\w]{2,3}-?[\d|\w]{2}$/.freeze
+
+  validate :num, :presence
+  validate :num, :format, TRAIN_RE
+  validate :attribute_class, :type_obj, Train
+
   @@trains = []
   def initialize(num)
+    @attribute_class = self
     @num = num
     @vans = []
     @current_speed = 0
     @route = nil
     @type = type
-    valid?(TRAIN_RE, @num, 'Train number doesnt match to requirements')
+    valid?
 
     @@trains.push(self)
     register_instance
